@@ -92,7 +92,9 @@ def get_playlists():
     
     ##make request to spotify API
 
-    headers = {'Authorization': f'Bearer {session['access_token']}'}
+    access_token = session['access_token']
+
+    headers = {'Authorization': f'Bearer {access_token}'}
 
     response = requests.get('https://api.spotify.com/v1/me/playlists', headers=headers)
 
