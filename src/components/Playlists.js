@@ -6,7 +6,7 @@ const Playlists = () => {
 
   useEffect(() => {
     // Fetch playlists from the backend
-    fetch('/playlists')
+    fetch('/api/playlists')
       .then((response) => {
         if (!response.ok) {
           throw new Error('Failed to fetch playlists');
