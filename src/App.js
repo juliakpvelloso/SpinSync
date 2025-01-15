@@ -2,6 +2,9 @@ import React from 'react';
 import './styles.css'; // Ensure this includes global styles (e.g., colors, fonts)
 
 const App = () => {
+  const handleLogin = () => {
+    window.location.href = '/login'; // Redirect to the backend login route
+  };
   return (
     <div className="home-container">
       {/* Image Section */}
@@ -12,7 +15,9 @@ const App = () => {
       <p className="subtitle">Organize your workout playlists with ease</p>
 
       {/* Button Section */}
-      <button className="login-button">Login with Spotify</button>
+      <button className="login-button" onClick={handleLogin}>
+        Login with Spotify
+      </button>
     </div>
   );
 };
