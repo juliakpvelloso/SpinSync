@@ -36,7 +36,7 @@ def static_files(path):
 @app.route('/login')
 def login():
     ##define necessary scopes
-    scope = 'user-read-private user-read-email playlist-modify-private playlist-modify-public'
+    scope = 'user-read-private user-read-email playlist-modify-private playlist-modify-public playlist-read-private'
 
     ##create params to pass over to the call we make to spotify 
     params = {
@@ -92,14 +92,29 @@ def get_playlists():
     
     ##make request to spotify API
 
-    headers = {
-        'Authorization': f"Bearer {session['access_token']}"
-    }
+    headers = {'Authorization': f'Bearer {session['access_token']}'}
 
-    response = requests.get(API_BASE_URL + 'me/playlists', headers=headers)
-    playlists = response.json()
+    response = requests.get('https://api.spotify.com/v1/me/playlists', headers=headers)
 
-    return jsonify(playlists)
+    if response.status_code != 200:
+        return jsonify({'error': 'Failed to fetch playlists'}), response.status_code
+    
+    playlists = response.json().get('items', [])
+    formatted_playlists = []
+
+    for playlist in playlists:
+        playlist_id = playlist['id']
+        playlist_name = playlist['name']
+        images = playlist ['images']
+        image_url = images[0]['url'] if images else None
+
+        formatted_playlists.append({
+            'id': playlist_id,
+            'name': playlist_name,
+            'image': image_url
+        })
+
+    return jsonify(formatted_playlists)
 
 ##refresh token 
 @app.route('/refresh-token')

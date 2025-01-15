@@ -127,5 +127,47 @@
     background-color: var(--secondary-color);
     color: var(--text-color);
   }
+
+  .playlists-container {
+    text-align: center;
+    padding: 20px;
+    font-family: var(--font-family);
+  }
+  
+  .grid-container {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr); /* 4 columns */
+    gap: 20px; /* Spacing between items */
+    padding: 20px;
+  }
+  
+  .grid-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: var(--background-color);
+    border: 1px solid var(--primary-color);
+    border-radius: 8px;
+    padding: 10px;
+    transition: transform 0.2s ease;
+  }
+  
+  .grid-item:hover {
+    transform: scale(1.05); /* Slight zoom on hover */
+  }
+  
+  .playlist-image {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+    margin-bottom: 10px;
+  }
+  
+  .playlist-name {
+    font-size: 1rem;
+    color: var(--text-color);
+    margin: 0;
+  }
+  
   
   
