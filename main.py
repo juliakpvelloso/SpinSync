@@ -36,7 +36,7 @@ def static_files(path):
 @app.route('/login')
 def login():
     ##define necessary scopes
-    scope = 'user-read-private user-read-email'
+    scope = 'user-read-private user-read-email playlist-modify-private playlist-modify-public'
 
     ##create params to pass over to the call we make to spotify 
     params = {
