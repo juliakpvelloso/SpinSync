@@ -1,24 +1,17 @@
 import React from 'react';
-import './styles.css'; // Ensure this includes global styles (e.g., colors, fonts)
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import Home from './components/Home'; // Home page
+import Playlists from './components/Playlists'; // Playlists page
+import '../src/styles.css'; // Global styles
 
 const App = () => {
-  const handleLogin = () => {
-    window.location.href = '/login'; // Redirect to the backend login route
-  };
   return (
-    <div className="home-container">
-      {/* Image Section */}
-      <img src="/spinsync.png" alt="SpinSync" className="spinsync-image" />
-
-      {/* Text Section */}
-      <h1 className="welcome-text">Welcome to SpinSync</h1>
-      <p className="subtitle">Organize your workout playlists with ease</p>
-
-      {/* Button Section */}
-      <button className="login-button" onClick={handleLogin}>
-        Login with Spotify
-      </button>
-    </div>
+    <Router>
+      <Routes>
+        <Route path="/" element={<Home />} /> {/* Home Page */}
+        <Route path="/playlists" element={<Playlists />} /> {/* Playlists Page */}
+      </Routes>
+    </Router>
   );
 };
 
