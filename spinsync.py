@@ -80,7 +80,7 @@ def callback():
 
         return redirect('/playlists')
     
-@app.route('/api/playlists')
+@app.route('/getplaylists')
 def get_playlists():
     ##check if token exists 
     if 'access_token' not in session:
