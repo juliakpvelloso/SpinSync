@@ -115,8 +115,8 @@ def get_playlists():
             'name': playlist_name,
             'image': image_url
         })
-
-    return jsonify(formatted_playlists)
+    test = "test"
+    return jsonify(test)
 
 ##refresh token 
 @app.route('/refresh-token')
